@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Upload, Key, CheckCircle, AlertCircle, Image as ImageIcon, Trash2, Save, Layers, Edit3 } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Upload, Key, CheckCircle, AlertCircle, Image as ImageIcon, Trash2, Save, Layers } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { fetchApi } from '../utils/api';
 
@@ -50,7 +50,7 @@ export function AdminUpload() {
     }
   };
 
-  const loadAdminImages = async () => {
+  const loadAdminImages = useCallback(async () => {
     if (!apiKey) return;
     setLoadingList(true);
     try {
@@ -66,13 +66,13 @@ export function AdminUpload() {
     } finally {
       setLoadingList(false);
     }
-  };
+  }, [apiKey]);
 
   useEffect(() => {
     if (authenticated && activeTab === 'manage') {
       loadAdminImages();
     }
-  }, [authenticated, activeTab]);
+  }, [authenticated, activeTab, loadAdminImages]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];

@@ -7,6 +7,19 @@ import { SeoHead } from '../components/SeoHead';
 import { CloudinaryImage } from '../components/CloudinaryImage';
 import { fetchApi } from '../utils/api';
 
+const CATEGORY_TITLES = {
+  portraits: 'Portraits',
+  'pre-weddings': 'Pre Weddings',
+  'tamil-weddings': 'Tamil Weddings',
+  'telugu-weddings': 'Telugu Weddings',
+  'brahmin-weddings': 'Brahmin Weddings',
+  'christian-weddings': 'Christian Weddings',
+  'muslim-weddings': 'Muslim Weddings',
+  engagement: 'Engagement',
+  events: 'Events',
+  'maternity-baby': 'Maternity/Baby',
+};
+
 const MOCK_CATEGORY_IMAGES = {
   'portraits': [
     { id: 1, url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600', altText: 'Bridal Portraiture' },
@@ -33,9 +46,8 @@ export function CategoryGallery() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIdx, setLightboxIdx] = useState(0);
 
-  // Format slug to pretty category title (e.g. 'tamil-weddings' -> 'Tamil Weddings')
   const formattedCategory = category
-    ? category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    ? (CATEGORY_TITLES[category] || category.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))
     : 'Gallery';
 
   useEffect(() => {
