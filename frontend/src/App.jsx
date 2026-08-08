@@ -4,14 +4,12 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { WhatsAppCTA } from './components/WhatsAppCTA';
 
 import { Home } from './pages/Home';
-import { About } from './pages/About';
-import { PortfolioCategories } from './pages/PortfolioCategories';
-import { CategoryGallery } from './pages/CategoryGallery';
-import { VideoFilms } from './pages/VideoFilms';
+import { ServiceCategory } from './pages/ServiceCategory';
+import { Albums } from './pages/Albums';
 import { Contact } from './pages/Contact';
-import { AdminUpload } from './pages/AdminUpload';
 
 export function App() {
   return (
@@ -22,15 +20,13 @@ export function App() {
           <main style={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/portfolio" element={<PortfolioCategories />} />
-              <Route path="/portfolio/:category" element={<CategoryGallery />} />
-              <Route path="/video" element={<VideoFilms />} />
+              <Route path="/services/:category" element={<ServiceCategory />} />
+              <Route path="/albums" element={<Albums />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/admin" element={<AdminUpload />} />
             </Routes>
           </main>
           <Footer />
+          <WhatsAppCTA />
         </div>
       </Router>
     </HelmetProvider>

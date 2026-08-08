@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { Camera, Sparkles, HeartHandshake, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { CloudinaryImage } from '../components/CloudinaryImage';
+import { aboutGalleryImages } from '../data/portfolioAssets';
 
 export function About() {
   return (
     <>
       <SeoHead
         title="About Smile Studios"
-        description="Learn about Smile Studios' artistic philosophy, medium-format cameras, and full-service photography & cinematography studio."
+        description="Learn how Smile Studios creates refined wedding, portrait and family imagery with warmth, artistry and a deeply personal process."
       />
 
       <div className="page-header">
@@ -26,23 +27,23 @@ export function About() {
               OUR JOURNEY
             </span>
             <h2 style={{ marginTop: '0.5rem', marginBottom: '1.5rem' }}>
-              We Don't Just Take Photos. We Craft Heirlooms.
+              We create imagery that feels timeless, personal and unmistakably yours.
             </h2>
             <p style={{ marginBottom: '1.25rem' }}>
-              Smile Studios was founded with a clear mission: to elevate photography and cinematography into fine art heirlooms. We move beyond stiff posing and fleeting trends, capturing genuine emotion, natural light, and refined compositions.
+              Smile Studios was built around the belief that the best photographs are the ones that feel effortless in the moment and timeless in hindsight. We work with couples, families and individuals who want their story captured with warmth, elegance and honesty.
             </p>
             <p style={{ marginBottom: '1.25rem' }}>
-              As a full-service photography studio, our expertise spans luxury destination weddings, editorial portraiture, commercial galas & events, maternity & newborn sessions, and high-definition films across India and internationally.
+              From intimate weddings and engagement sessions to editorial portraits and family milestones, our work is shaped by thoughtful composition, natural light and a calm, relaxed experience from start to finish.
             </p>
             <p style={{ marginBottom: '2rem' }}>
-              Our approach balances artistic discipline with relaxed engagement, ensuring you look effortless while enjoying every moment of your shoot.
+              Our goal is simple: to leave you with photographs that feel as meaningful years from now as they did the day they were captured.
             </p>
           </div>
 
           <div style={{ position: 'relative', height: '500px' }}>
             <CloudinaryImage
-              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200"
-              alt="Photographer at Smile Studios"
+              src={aboutGalleryImages[0]}
+              alt="A Smile Studios portrait session in natural light"
               style={{ width: '100%', height: '100%', borderRadius: 'var(--radius-md)', objectFit: 'cover' }}
             />
           </div>

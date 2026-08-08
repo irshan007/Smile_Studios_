@@ -198,6 +198,36 @@
   font-weight: 600;
 }
 
+/* Service Cards */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.service-image {
+  width: 100%;
+  height: 240px;
+  display: block;
+}
+
+.service-card-content {
+  padding: 1.5rem;
+}
+
+.service-card-content h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1.35rem;
+}
+
 /* Closing CTA Banner */
 .closing-cta {
   background: radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 0%, rgba(20, 20, 23, 1) 80%);

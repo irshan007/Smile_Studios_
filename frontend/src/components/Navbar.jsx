@@ -65,21 +65,6 @@ export function Navbar() {
               ))}
             </div>
           </li>
-          <li className="nav-item">
-            <Link to="/video" className={`nav-link ${location.pathname === '/video' ? 'active' : ''}`}>
-              Films
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}>
-              Contact
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/admin" className={`nav-link ${location.pathname === '/admin' ? 'active' : ''}`} style={{ opacity: 0.7 }}>
-              Admin
-            </Link>
-          </li>
         </ul>
 
         {/* Mobile Toggle Button */}
@@ -104,8 +89,6 @@ export function Navbar() {
             ))}
           </div>
           <Link to="/video" className="mobile-link">Films</Link>
-          <Link to="/contact" className="mobile-link">Contact Us</Link>
-          <Link to="/admin" className="mobile-link" style={{ fontSize: '1rem', color: 'var(--accent-gold)' }}>Admin Panel</Link>
         </div>
       </div>
     </nav>

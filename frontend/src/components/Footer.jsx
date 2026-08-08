@@ -43,7 +43,6 @@ export function Footer() {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About Studio</Link></li>
               <li><Link to="/portfolio">All Galleries</Link></li>
-              <li><Link to="/video">Cinematography & Films</Link></li>
               <li><Link to="/contact">Book Consultation</Link></li>
             </ul>
           </div>
@@ -81,7 +80,6 @@ export function Footer() {
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Smile Studios. All rights reserved.</p>
           <p style={{ display: 'flex', gap: '1.5rem' }}>
-            <Link to="/admin" style={{ color: 'var(--text-dim)' }}>Admin Dashboard</Link>
           </p>
         </div>
       </div>

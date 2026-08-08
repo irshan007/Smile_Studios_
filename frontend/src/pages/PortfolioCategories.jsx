@@ -4,20 +4,10 @@ import { ArrowUpRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { CloudinaryImage } from '../components/CloudinaryImage';
 import { fetchApi } from '../utils/api';
+import { categoryCovers } from '../data/portfolioAssets';
 import './PortfolioCategories.css';
 
-const DEFAULT_CATEGORIES = [
-  { name: 'Portraits', slug: 'portraits', coverImageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200', imageCount: 14 },
-  { name: 'Pre Weddings', slug: 'pre-weddings', coverImageUrl: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=1200', imageCount: 18 },
-  { name: 'Tamil Weddings', slug: 'tamil-weddings', coverImageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=1200', imageCount: 22 },
-  { name: 'Telugu Weddings', slug: 'telugu-weddings', coverImageUrl: 'https://images.unsplash.com/photo-1545232979-fbfd42e2006f?auto=format&fit=crop&q=80&w=1200', imageCount: 16 },
-  { name: 'Brahmin Weddings', slug: 'brahmin-weddings', coverImageUrl: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200', imageCount: 15 },
-  { name: 'Christian Weddings', slug: 'christian-weddings', coverImageUrl: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1200', imageCount: 19 },
-  { name: 'Muslim Weddings', slug: 'muslim-weddings', coverImageUrl: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&q=80&w=1200', imageCount: 17 },
-  { name: 'Engagement', slug: 'engagement', coverImageUrl: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=80&w=1200', imageCount: 12 },
-  { name: 'Events', slug: 'events', coverImageUrl: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200', imageCount: 10 },
-  { name: 'Maternity/Baby', slug: 'maternity-baby', coverImageUrl: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=1200', imageCount: 11 },
-];
+const DEFAULT_CATEGORIES = categoryCovers;
 
 export function PortfolioCategories() {
   const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
@@ -40,13 +30,16 @@ export function PortfolioCategories() {
     <>
       <SeoHead
         title="Portfolio Categories"
-        description="Explore Smile Studios' portfolio categories: Portraits, Pre Weddings, Weddings, Events, Maternity/Baby, and Engagement."
+        description="Browse Smile Studios' weddings, pre-weddings, portraits, engagement stories, maternity sessions and event captures."
       />
 
       <div className="page-header">
         <div className="container">
           <span className="subtitle">EXPLORE GALLERIES</span>
           <h1>Portfolio Categories</h1>
+          <p style={{ marginTop: '0.75rem', maxWidth: '760px', margin: '0.75rem auto 0' }}>
+            Each collection reflects the calm, elegant atmosphere we create for our clients, from intimate portraits to full wedding weekend storytelling.
+          </p>
         </div>
       </div>
 
@@ -62,7 +55,10 @@ export function PortfolioCategories() {
                     <ArrowUpRight size={20} />
                   </div>
                 </div>
-                <h2 className="category-title">{cat.name}</h2>
+                <div>
+                  <h2 className="category-title">{cat.name}</h2>
+                  <p style={{ color: 'var(--text-main)', marginTop: '0.5rem', maxWidth: '320px' }}>{cat.summary}</p>
+                </div>
               </div>
             </Link>
           ))}

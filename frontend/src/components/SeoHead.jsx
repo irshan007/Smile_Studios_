@@ -1,10 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { seoImage } from '../data/portfolioAssets';
 
 export function SeoHead({
   title = 'Smile Studios | Luxury Photography & Cinematography',
-  description = 'Smile Studios is a premier full-service photography studio specializing in weddings, portraits, events, maternity/baby shoots, and cinematography.',
-  image = 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200',
+  description = 'Smile Studios is a refined photography studio creating timeless wedding, portrait and family stories with warmth, elegance and intention.',
+  image = seoImage,
   url = window.location.href,
 }) {
   const siteName = 'Smile Studios Photography & Films';

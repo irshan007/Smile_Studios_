@@ -7,30 +7,10 @@ import 'yet-another-react-lightbox/styles.css';
 import { SeoHead } from '../components/SeoHead';
 import { CloudinaryImage } from '../components/CloudinaryImage';
 import { fetchApi } from '../utils/api';
+import { heroSlides, homeSelectedWorks, aboutGalleryImages } from '../data/portfolioAssets';
 import './Home.css';
 
-const DEFAULT_HERO_SLIDES = [
-  {
-    url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000',
-    title: 'Timeless Romance, Fine Art Vision',
-    tag: 'Smile Studios • Photography & Films',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=2000',
-    title: 'Unscripted Moments, High Fashion Elegance',
-    tag: 'Fine Art Portraits & Weddings',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=2000',
-    title: 'Events, Celebrations & Life Stories',
-    tag: 'Commercial Events & Family Heirlooms',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&q=80&w=2000',
-    title: 'Crafted for the Discerning Client',
-    tag: 'Full-Service Photography Studio',
-  },
-];
+const DEFAULT_HERO_SLIDES = heroSlides;
 
 export function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -91,27 +71,40 @@ export function Home() {
         title: img.altText || 'Smile Studios Fine Art Photography',
         tag: img.category ? `Smile Studios • ${img.category}` : 'Smile Studios Photography & Films',
       }))
-    : DEFAULT_HERO_SLIDES;
+    : DEFAULT_HERO_SLIDES.map(slide => ({ url: slide.src, title: slide.title, tag: slide.tag }));
 
-  const displayWorks = selectedWorks.length > 0 ? selectedWorks : [
-    { id: 1, url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200', category: 'Portraits', altText: 'Fine Art Portrait' },
-    { id: 2, url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200', category: 'Pre Weddings', altText: 'Sunset Romance' },
-    { id: 3, url: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=1200', category: 'Tamil Weddings', altText: 'Muhurtham Ritual' },
-    { id: 4, url: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200', category: 'Events', altText: 'Gala Night Atmosphere' },
-    { id: 5, url: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=1200', category: 'Maternity/Baby', altText: 'Maternity Glow' },
-    { id: 6, url: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&q=80&w=1200', category: 'Muslim Weddings', altText: 'Nikah Grace' },
-  ];
+  const displayWorks = selectedWorks.length > 0
+    ? selectedWorks
+    : homeSelectedWorks.map((item) => ({ id: item.id, url: item.src, category: item.category, altText: item.altText }));
 
   const displayTestimonials = testimonials.length > 0 ? testimonials : [
-    { id: 1, coupleNames: 'Ananya & Siddharth', message: 'Smile Studios captured every emotion of our 3-day wedding so effortlessly. Looking back at our album feels like reliving the magic all over again!' },
-    { id: 2, coupleNames: 'Priya & Vikram', message: 'Absolute masterclass in storytelling. Their attention to detail, lighting, and genuine moments made our photos look straight out of a luxury magazine.' },
+    { id: 1, coupleNames: 'Ananya & Siddharth', message: 'Every detail felt intentional, warm and effortless. Our album is beautiful because it captured the real feeling of our day.' },
+    { id: 2, coupleNames: 'Priya & Vikram', message: 'The team made us feel completely at ease. The final gallery feels elegant, honest and timeless.' },
+  ];
+
+  const serviceHighlights = [
+    {
+      title: 'Wedding Storytelling',
+      description: 'From ceremonies to late-night celebrations, we document the emotion, ritual and atmosphere in a way that feels cinematic and personal.',
+      image: heroSlides[0].src,
+    },
+    {
+      title: 'Editorial Portraits',
+      description: 'Thoughtful portraits that balance confidence, softness and character, crafted for modern couples and individuals alike.',
+      image: homeSelectedWorks[5].src,
+    },
+    {
+      title: 'Family Milestones',
+      description: 'Maternity, baby and family sessions designed to feel calm, intimate and beautifully natural.',
+      image: aboutGalleryImages[2],
+    },
   ];
 
   return (
     <>
       <SeoHead
         title="Smile Studios | Luxury Photography & Cinematography"
-        description="Award-winning full-service photography studio specializing in weddings, portraits, pre-weddings, corporate events, maternity/baby sessions, and films."
+        description="A refined photography studio creating timeless wedding, portrait, maternity and event stories with warmth, elegance and intention."
       />
 
       {/* 1. HERO SLIDESHOW */}
@@ -165,13 +158,13 @@ export function Home() {
         <div className="why-us-grid">
           <div className="why-us-images">
             <CloudinaryImage
-              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1000"
-              alt="Portrait Session"
+              src={aboutGalleryImages[0]}
+              alt="A polished wedding portrait from Smile Studios"
               className="why-us-img-1"
             />
             <CloudinaryImage
-              src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=1000"
-              alt="Couple Embrace"
+              src={aboutGalleryImages[1]}
+              alt="An engagement session captured with natural intimacy"
               className="why-us-img-2"
             />
           </div>
@@ -181,28 +174,28 @@ export function Home() {
               SMILE STUDIOS PHILOSOPHY
             </span>
             <h2 style={{ marginTop: '0.5rem', marginBottom: '1.5rem' }}>
-              Full-Service Fine Art Photography & Cinematography Studio
+              A studio that photographs real love, quiet luxury, and meaningful milestones.
             </h2>
             <p style={{ marginBottom: '1.25rem' }}>
-              Smile Studios is a boutique creative studio capturing life's grandest milestones and subtle emotions. From high-fashion editorial portraits and luxury destination weddings to corporate galas and intimate maternity sessions, our visual storytelling is tailored to your unique vision.
+              Smile Studios is known for warm, graceful storytelling that feels both polished and deeply personal. We create imagery for weddings, engagement sessions, editorial portraits, maternity moments and intimate celebrations with a timeless, human touch.
             </p>
             <p style={{ marginBottom: '2rem' }}>
-              Our team combines medium-format optical precision with custom editorial color grading, delivering heirlooms that remain timeless for generations.
+              Our approach is calm, detail-led and intentionally unforced, so every gallery feels like you — elegant, relaxed and completely true to the moment.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
               <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
                 <Camera color="var(--accent-gold)" size={24} style={{ flexShrink: 0 }} />
                 <div>
-                  <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem', marginBottom: '0.25rem' }}>Multi-Disciplinary Scope</h4>
-                  <p style={{ fontSize: '0.85rem' }}>Weddings, Portraits, Events, Maternity & Films.</p>
+                  <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem', marginBottom: '0.25rem' }}>Tailored for every chapter</h4>
+                  <p style={{ fontSize: '0.85rem' }}>Weddings, engagements, family milestones and editorial portraits.</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
                 <Sparkles color="var(--accent-gold)" size={24} style={{ flexShrink: 0 }} />
                 <div>
-                  <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem', marginBottom: '0.25rem' }}>Award-Winning Team</h4>
-                  <p style={{ fontSize: '0.85rem' }}>Recognized across top visual arts publications.</p>
+                  <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem', marginBottom: '0.25rem' }}>Refined storytelling</h4>
+                  <p style={{ fontSize: '0.85rem' }}>Soft light, elegant composition and a calm client experience.</p>
                 </div>
               </div>
             </div>
@@ -220,7 +213,7 @@ export function Home() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
               <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
-                CURATED SELECTION
+                FEATURED STORIES
               </span>
               <h2>Selected Works</h2>
             </div>
@@ -254,7 +247,29 @@ export function Home() {
         </div>
       </section>
 
-      {/* 4. TESTIMONIALS CAROUSEL */}
+      {/* 4. SIGNATURE SERVICES */}
+      <section className="section-padding container">
+        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
+            WHAT WE CAPTURE
+          </span>
+          <h2>Photography shaped around your story</h2>
+        </div>
+
+        <div className="service-grid">
+          {serviceHighlights.map((service) => (
+            <div key={service.title} className="service-card">
+              <CloudinaryImage src={service.image} alt={service.title} className="service-image" />
+              <div className="service-card-content">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. TESTIMONIALS CAROUSEL */}
       <section className="section-padding container">
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <Heart color="var(--accent-gold)" size={28} style={{ marginBottom: '0.75rem' }} />
@@ -293,17 +308,17 @@ export function Home() {
         </div>
       </section>
 
-      {/* 5. CLOSING CTA BANNER */}
+      {/* 6. CLOSING CTA BANNER */}
       <section className="closing-cta">
         <div className="container" style={{ maxWidth: '700px' }}>
           <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
             BEGIN YOUR STORY
           </span>
           <h2 style={{ marginTop: '0.5rem', marginBottom: '1.5rem', fontSize: '3rem' }}>
-            Let's Capture Your Next Chapter
+            Let’s begin your next chapter together.
           </h2>
           <p style={{ marginBottom: '2.5rem' }}>
-            Currently accepting commissions for weddings, portraits, events, maternity sessions, and films across India and worldwide.
+            We are currently booking weddings, engagement sessions, editorial portraits, family milestones and cinematic event films across India and internationally.
           </p>
           <Link to="/contact" className="btn-primary">
             Request Availability & Pricing <ArrowRight size={18} />
