@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ArrowRight, Camera, Award, Heart, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Camera, Heart, Sparkles } from 'lucide-react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
