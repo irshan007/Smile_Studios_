@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,11 +29,18 @@ public class AdminController {
     public AdminController(
             CloudinaryService cloudinaryService,
             GalleryService galleryService,
-            @Value("${admin.api-key:smile_secret_admin_key_2026}") String expectedApiKey
+            @Value("${admin.api-key}") String expectedApiKey
     ) {
         this.cloudinaryService = cloudinaryService;
         this.galleryService = galleryService;
         this.expectedApiKey = expectedApiKey;
+    }
+
+    @PostConstruct
+    public void validateApiKey() {
+        if (expectedApiKey == null || expectedApiKey.isBlank()) {
+            throw new IllegalStateException("ADMIN_API_KEY environment variable is required but not set. Application cannot start without admin API key.");
+        }
     }
 
     private void checkApiKey(String apiKey) {
