@@ -50,10 +50,14 @@ public class CloudinaryService {
             String resultPublicId = (String) uploadResult.get("public_id");
             return new UploadResult(url, resultPublicId);
         } else {
-            // Fallback for local testing without active Cloudinary keys
-            // Generates a mock Cloudinary URL structure so frontend responsive transformations work seamlessly
             String fallbackUrl = "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600";
             return new UploadResult(fallbackUrl, "demo_public_id_" + publicId);
+        }
+    }
+
+    public void destroy(String publicId) throws IOException {
+        if (isConfigured && cloudinary != null && publicId != null && !publicId.startsWith("demo_public_id_")) {
+            cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
         }
     }
 
