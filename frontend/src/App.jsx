@@ -7,8 +7,9 @@ import { Footer } from './components/Footer';
 import { WhatsAppCTA } from './components/WhatsAppCTA';
 
 import { Home } from './pages/Home';
-import { ServiceCategory } from './pages/ServiceCategory';
-import { Albums } from './pages/Albums';
+import { About } from './pages/About';
+import { PortfolioCategories } from './pages/PortfolioCategories';
+import { CategoryGallery } from './pages/CategoryGallery';
 import { Contact } from './pages/Contact';
 
 export function App() {
@@ -20,8 +21,9 @@ export function App() {
           <main style={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/services/:category" element={<ServiceCategory />} />
-              <Route path="/albums" element={<Albums />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/portfolio" element={<PortfolioCategories />} />
+              <Route path="/portfolio/:category" element={<CategoryGallery />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>

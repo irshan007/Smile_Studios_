@@ -208,7 +208,7 @@ export function Home() {
       </section>
 
       {/* 3. SELECTED WORKS PREVIEW */}
-      <section style={{ background: 'var(--bg-surface)', padding: '6rem 0', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
+      <section className="featured-stories-section" style={{ background: 'var(--bg-surface)', padding: '6rem 0', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div>

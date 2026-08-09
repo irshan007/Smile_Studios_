@@ -1,6 +1,3 @@
-package com.photography.backend.entity;
-
-// Package fix
 package com.photography.backend.repository;
 
 import com.photography.backend.entity.ContactSubmission;

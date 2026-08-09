@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { getResponsiveCloudinaryUrl } from '../utils/cloudinary';
 
-export function CloudinaryImage({ src, alt, width = 1200, className = '', onClick }) {
+export function CloudinaryImage({ src, alt, width = 1200, className = '', onClick, style }) {
   const [loaded, setLoaded] = useState(false);
   const optimizedUrl = getResponsiveCloudinaryUrl(src, width);
 
   return (
-    <div className={`cloudinary-img-wrapper ${className}`} style={{ position: 'relative', overflow: 'hidden' }}>
+    <div
+      className={`cloudinary-img-wrapper ${className}`}
+      style={{ position: 'relative', overflow: 'hidden', ...style }}
+    >
       <img
         src={optimizedUrl}
         alt={alt || 'Photography detail'}
