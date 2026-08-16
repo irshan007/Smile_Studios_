@@ -6,11 +6,7 @@ import { fetchApi } from '../utils/api';
 const CATEGORIES = [
   'Portraits',
   'Pre Weddings',
-  'Tamil Weddings',
-  'Telugu Weddings',
-  'Brahmin Weddings',
-  'Christian Weddings',
-  'Muslim Weddings',
+  'Weddings',
   'Engagement',
   'Events',
   'Maternity/Baby',

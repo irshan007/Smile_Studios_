@@ -54,7 +54,7 @@ export function Footer() {
               <li><Link to="/portfolio/portraits">Portraits</Link></li>
               <li><Link to="/portfolio/events">Events</Link></li>
               <li><Link to="/portfolio/maternity-baby">Maternity & Baby</Link></li>
-              <li><Link to="/portfolio/tamil-weddings">Tamil Weddings</Link></li>
+              <li><Link to="/portfolio/weddings">Weddings</Link></li>
               <li><Link to="/portfolio/pre-weddings">Pre Weddings</Link></li>
             </ul>
           </div>

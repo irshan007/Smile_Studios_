@@ -13,6 +13,12 @@ const CATEGORY_TITLES = {
   events: 'Events',
   'maternity-baby': 'Maternity/Baby',
   weddings: 'Weddings',
+  'pre-weddings': 'Pre-Weddings',
+  'tamil-weddings': 'Weddings',
+  'telugu-weddings': 'Weddings',
+  'brahmin-weddings': 'Weddings',
+  'christian-weddings': 'Weddings',
+  'muslim-weddings': 'Weddings',
 };
 
 export function CategoryGallery() {

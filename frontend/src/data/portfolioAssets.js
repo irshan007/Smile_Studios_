@@ -135,6 +135,11 @@ export const categoryCovers = [
 
 export const categoryFallbacks = {
   weddings: [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
+  'tamil-weddings': [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
+  'telugu-weddings': [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
+  'brahmin-weddings': [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
+  'christian-weddings': [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
+  'muslim-weddings': [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
   'pre-weddings': [preWedding1, preWedding2, preWedding3, preWedding4, preWedding5],
   engagement: [engagement1, engagement2, engagement3, engagement4, engagement5],
   portraits: [portrait1, portrait2, portrait3, portrait4, portrait5],

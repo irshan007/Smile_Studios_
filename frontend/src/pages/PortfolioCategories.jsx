@@ -49,8 +49,7 @@ export function PortfolioCategories() {
             <Link key={cat.slug} to={`/portfolio/${cat.slug}`} className="category-card">
               <CloudinaryImage src={cat.coverImageUrl} alt={cat.name} className="category-card-bg" />
               <div className="category-card-overlay">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span className="category-badge">{cat.imageCount} Photographs</span>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
                   <div className="category-arrow">
                     <ArrowUpRight size={20} />
                   </div>

@@ -6,11 +6,7 @@ import './Navbar.css';
 const CATEGORIES = [
   { name: 'Portraits', slug: 'portraits' },
   { name: 'Pre Weddings', slug: 'pre-weddings' },
-  { name: 'Tamil Weddings', slug: 'tamil-weddings' },
-  { name: 'Telugu Weddings', slug: 'telugu-weddings' },
-  { name: 'Brahmin Weddings', slug: 'brahmin-weddings' },
-  { name: 'Christian Weddings', slug: 'christian-weddings' },
-  { name: 'Muslim Weddings', slug: 'muslim-weddings' },
+  { name: 'Weddings', slug: 'weddings' },
   { name: 'Engagement', slug: 'engagement' },
   { name: 'Events', slug: 'events' },
   { name: 'Maternity/Baby', slug: 'maternity-baby' },
