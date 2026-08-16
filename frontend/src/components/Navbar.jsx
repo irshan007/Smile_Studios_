@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 const CATEGORIES = [
@@ -9,11 +9,12 @@ const CATEGORIES = [
   { name: 'Weddings', slug: 'weddings' },
   { name: 'Engagement', slug: 'engagement' },
   { name: 'Events', slug: 'events' },
-  { name: 'Maternity/Baby', slug: 'maternity-baby' },
+  { name: 'Maternity & Baby', slug: 'maternity-baby' },
 ];
 
 export function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isPortfolioExpanded, setIsPortfolioExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
@@ -25,9 +26,23 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile drawer and collapse accordion on navigation
   useEffect(() => {
     setIsMobileOpen(false);
+    setIsPortfolioExpanded(false);
   }, [location.pathname]);
+
+  // Lock background body scroll when mobile drawer is open
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileOpen]);
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -71,20 +86,55 @@ export function Navbar() {
         >
           {isMobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
+      </div>
 
-        {/* Mobile Drawer */}
-        <div className={`mobile-drawer ${isMobileOpen ? 'open' : ''}`}>
-          <Link to="/" className="mobile-link">Home</Link>
-          <Link to="/about" className="mobile-link">About</Link>
-          <Link to="/portfolio" className="mobile-link">All Portfolio Categories</Link>
-          <div style={{ paddingLeft: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {CATEGORIES.map((cat) => (
-              <Link key={cat.slug} to={`/portfolio/${cat.slug}`} style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
-                • {cat.name}
-              </Link>
-            ))}
+      {/* Mobile Drawer Overlay */}
+      <div className={`mobile-drawer ${isMobileOpen ? 'open' : ''}`}>
+        <div className="mobile-drawer-content">
+          <Link to="/" className="mobile-link" onClick={() => setIsMobileOpen(false)}>
+            Home
+          </Link>
+          
+          <Link to="/about" className="mobile-link" onClick={() => setIsMobileOpen(false)}>
+            About
+          </Link>
+
+          <div className="mobile-portfolio-wrapper">
+            <button
+              type="button"
+              className="mobile-portfolio-toggle"
+              onClick={() => setIsPortfolioExpanded(!isPortfolioExpanded)}
+            >
+              <span>Portfolio</span>
+              {isPortfolioExpanded ? (
+                <ChevronUp size={20} className="accordion-icon" />
+              ) : (
+                <ChevronDown size={20} className="accordion-icon" />
+              )}
+            </button>
+
+            {isPortfolioExpanded && (
+              <div className="mobile-portfolio-sublist">
+                <Link
+                  to="/portfolio"
+                  className="mobile-sublink mobile-sublink-all"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  All Portfolio Categories
+                </Link>
+                {CATEGORIES.map((cat) => (
+                  <Link
+                    key={cat.slug}
+                    to={`/portfolio/${cat.slug}`}
+                    className="mobile-sublink"
+                    onClick={() => setIsMobileOpen(false)}
+                  >
+                    {cat.name}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
-          <Link to="/video" className="mobile-link">Films</Link>
         </div>
       </div>
     </nav>
