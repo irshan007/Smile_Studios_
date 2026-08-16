@@ -9,12 +9,6 @@ import './CategoryGallery.css';
 
 const CATEGORY_TITLES = {
   portraits: 'Portraits',
-  'pre-weddings': 'Pre Weddings',
-  'tamil-weddings': 'Tamil Weddings',
-  'telugu-weddings': 'Telugu Weddings',
-  'brahmin-weddings': 'Brahmin Weddings',
-  'christian-weddings': 'Christian Weddings',
-  'muslim-weddings': 'Muslim Weddings',
   engagement: 'Engagement',
   events: 'Events',
   'maternity-baby': 'Maternity/Baby',
@@ -66,7 +60,18 @@ export function CategoryGallery() {
               }}
               aria-label={`Open ${formattedCategory} photo ${index + 1}`}
             >
-              <img src={img} alt={`${formattedCategory} photo ${index + 1}`} className="gallery-image" />
+              <img
+                src={img}
+                alt={`${formattedCategory} photo ${index + 1}`}
+                className="gallery-image"
+                loading="lazy"
+              />
+              <div className="gallery-tile-overlay">
+                <span className="gallery-tile-number">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="gallery-tile-caption">View Photograph</span>
+              </div>
             </button>
           ))}
         </div>
