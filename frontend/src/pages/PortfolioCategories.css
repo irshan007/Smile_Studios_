@@ -88,11 +88,34 @@
   color: var(--text-main);
 }
 
+@media (max-width: 768px) {
+  .category-grid {
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 600px) {
   .category-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 0 1rem;
   }
+
   .category-card {
-    height: 380px;
+    width: 100%;
+    max-width: 340px;
+    height: 440px;
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
+  }
+
+  .category-card-overlay {
+    padding: 1.5rem;
+  }
+
+  .category-title {
+    font-size: 1.75rem;
   }
 }
