@@ -1,1 +1,14 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!mvnw
+!mvnw.cmd
+
+# Local environment variables
+.env
+*.env
 src/main/resources/.env
+
+# IDE / OS files
+.idea/
+*.iml
+.DS_Store
