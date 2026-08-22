@@ -1,45 +1,32 @@
 package com.photography.backend.entity;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "contact_submissions")
 public class ContactSubmission {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "name", nullable = false)
     private String name;
-
-    @Column(name = "email", nullable = false)
     private String email;
-
-    @Column(name = "phone", nullable = false)
     private String phone;
-
-    @Column(name = "event_date")
     private LocalDate eventDate;
-
-    @Column(name = "message", nullable = false, columnDefinition = "TEXT")
     private String message;
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
     public ContactSubmission() {
     }
 
-    public ContactSubmission(String name, String email, String phone, LocalDate eventDate, String message) {
+    public ContactSubmission(Long id, String name, String email, String phone, LocalDate eventDate, String message, LocalDateTime createdAt) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.eventDate = eventDate;
         this.message = message;
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = createdAt;
+    }
+
+    public ContactSubmission(String name, String email, String phone, LocalDate eventDate, String message) {
+        this(null, name, email, phone, eventDate, message, LocalDateTime.now());
     }
 
     public Long getId() {

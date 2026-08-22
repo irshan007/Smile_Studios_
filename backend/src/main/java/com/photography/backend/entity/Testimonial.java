@@ -1,31 +1,23 @@
 package com.photography.backend.entity;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "testimonials")
 public class Testimonial {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "couple_names", nullable = false)
-    private String coupleNames;
-
-    @Column(name = "message", nullable = false, columnDefinition = "TEXT")
-    private String message;
-
-    @Column(name = "display_order")
+    private String names;
+    private String quote;
     private Integer displayOrder;
 
     public Testimonial() {
     }
 
-    public Testimonial(String coupleNames, String message, Integer displayOrder) {
-        this.coupleNames = coupleNames;
-        this.message = message;
-        this.displayOrder = displayOrder != null ? displayOrder : 0;
+    public Testimonial(Long id, String names, String quote, Integer displayOrder) {
+        this.id = id;
+        this.names = names;
+        this.quote = quote;
+        this.displayOrder = displayOrder;
+    }
+
+    public Testimonial(String names, String quote, Integer displayOrder) {
+        this(null, names, quote, displayOrder);
     }
 
     public Long getId() {
@@ -36,20 +28,20 @@ public class Testimonial {
         this.id = id;
     }
 
-    public String getCoupleNames() {
-        return coupleNames;
+    public String getNames() {
+        return names;
     }
 
-    public void setCoupleNames(String coupleNames) {
-        this.coupleNames = coupleNames;
+    public void setNames(String names) {
+        this.names = names;
     }
 
-    public String getMessage() {
-        return message;
+    public String getQuote() {
+        return quote;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setQuote(String quote) {
+        this.quote = quote;
     }
 
     public Integer getDisplayOrder() {

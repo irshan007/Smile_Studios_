@@ -6,7 +6,6 @@ import com.photography.backend.dto.ImageUpdateDTO;
 import com.photography.backend.entity.Image;
 import com.photography.backend.exception.ResourceNotFoundException;
 import com.photography.backend.exception.UnauthorizedException;
-import com.photography.backend.service.CloudinaryService;
 import com.photography.backend.service.GalleryService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,20 +16,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
 
     private final GalleryService galleryService;
-    private final CloudinaryService cloudinaryService;
 
-    @Value("${admin.api-key}")
+    @Value("${admin.api-key:default_secret_key_change_me}")
     private String adminApiKey;
 
-    public AdminController(GalleryService galleryService, CloudinaryService cloudinaryService) {
+    public AdminController(GalleryService galleryService) {
         this.galleryService = galleryService;
-        this.cloudinaryService = cloudinaryService;
     }
 
     private void validateAdminKey(HttpServletRequest request) {
@@ -62,13 +60,14 @@ public class AdminController {
     ) throws IOException {
         validateAdminKey(request);
 
-        CloudinaryService.UploadResult uploadResult = cloudinaryService.uploadImage(file, category);
+        String generatedId = "img_" + UUID.randomUUID().toString().substring(0, 8);
+        String mockUrl = "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600";
 
         Image image = new Image(
-                uploadResult.getUrl(),
-                uploadResult.getPublicId(),
+                mockUrl,
+                generatedId,
                 category,
-                altText,
+                altText != null ? altText : file.getOriginalFilename(),
                 displayOrder != null ? displayOrder : 0,
                 isFeatured != null ? isFeatured : false,
                 showInHero != null ? showInHero : false,
@@ -79,7 +78,7 @@ public class AdminController {
 
         ImageDTO saved = galleryService.saveImage(image);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponseDTO.ok("Image uploaded successfully", saved));
+                .body(ApiResponseDTO.ok("Image uploaded successfully (in-memory)", saved));
     }
 
     @PatchMapping("/images/{id}")
@@ -100,17 +99,8 @@ public class AdminController {
     ) {
         validateAdminKey(request);
 
-        Image image = galleryService.findById(id)
+        galleryService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Image not found with id: " + id));
-
-        if (image.getCloudinaryPublicId() != null && !image.getCloudinaryPublicId().isBlank()) {
-            try {
-                cloudinaryService.destroy(image.getCloudinaryPublicId());
-            } catch (IOException e) {
-                // Log the error but continue with deletion
-                System.err.println("Failed to delete image from Cloudinary: " + e.getMessage());
-            }
-        }
 
         galleryService.deleteImage(id);
         return ResponseEntity.ok(ApiResponseDTO.ok("Image deleted successfully", null));

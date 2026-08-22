@@ -2,25 +2,23 @@ package com.photography.backend.service;
 
 import com.photography.backend.dto.ContactRequestDTO;
 import com.photography.backend.entity.ContactSubmission;
-import com.photography.backend.repository.ContactSubmissionRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class ContactService {
 
-    private final ContactSubmissionRepository contactSubmissionRepository;
+    private final List<ContactSubmission> submissions = new CopyOnWriteArrayList<>();
+    private final AtomicLong idCounter = new AtomicLong(1);
 
-    public ContactService(ContactSubmissionRepository contactSubmissionRepository) {
-        this.contactSubmissionRepository = contactSubmissionRepository;
-    }
-
-    @Transactional
     public ContactSubmission processContactSubmission(ContactRequestDTO dto) {
-        // Anti-spam Honeypot Check: if 'website' field is populated, silently handle without database write or error
+        // Anti-spam Honeypot Check: if 'website' field is populated, silently return fake submission without saving
         if (dto.getWebsite() != null && !dto.getWebsite().isBlank()) {
-            // Fake success response for bots
             ContactSubmission dummy = new ContactSubmission(dto.getName(), dto.getEmail(), dto.getPhone(), dto.getEventDate(), dto.getMessage());
+            dummy.setId(idCounter.getAndIncrement());
             return dummy;
         }
 
@@ -31,7 +29,13 @@ public class ContactService {
                 dto.getEventDate(),
                 dto.getMessage()
         );
+        submission.setId(idCounter.getAndIncrement());
 
-        return contactSubmissionRepository.save(submission);
+        submissions.add(submission);
+        return submission;
+    }
+
+    public List<ContactSubmission> getAllSubmissions() {
+        return List.copyOf(submissions);
     }
 }

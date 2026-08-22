@@ -1,66 +1,41 @@
 package com.photography.backend.entity;
 
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
-
-@Entity
-@Table(name = "images")
 public class Image {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "cloudinary_url", nullable = false, length = 1000)
     private String cloudinaryUrl;
-
-    @Column(name = "cloudinary_public_id")
     private String cloudinaryPublicId;
-
-    @Column(name = "category", nullable = false)
     private String category;
-
-    @Column(name = "alt_text")
     private String altText;
-
-    @Column(name = "display_order")
-    private Integer displayOrder = 0;
-
-    @Column(name = "hero_order")
-    private Integer heroOrder = 0;
-
-    @Column(name = "selected_works_order")
-    private Integer selectedWorksOrder = 0;
-
-    @Column(name = "is_featured", nullable = false)
-    private Boolean isFeatured = false;
-
-    @Column(name = "show_in_hero", nullable = false)
-    private Boolean showInHero = false;
-
-    @Column(name = "show_in_selected_works", nullable = false)
-    private Boolean showInSelectedWorks = false;
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private Integer displayOrder;
+    private Boolean isFeatured;
+    private Boolean showInHero;
+    private Boolean showInSelectedWorks;
+    private Integer heroOrder;
+    private Integer selectedWorksOrder;
 
     public Image() {
+    }
+
+    public Image(Long id, String cloudinaryUrl, String cloudinaryPublicId, String category, String altText,
+                 Integer displayOrder, Boolean isFeatured, Boolean showInHero, Boolean showInSelectedWorks,
+                 Integer heroOrder, Integer selectedWorksOrder) {
+        this.id = id;
+        this.cloudinaryUrl = cloudinaryUrl;
+        this.cloudinaryPublicId = cloudinaryPublicId;
+        this.category = category;
+        this.altText = altText;
+        this.displayOrder = displayOrder;
+        this.isFeatured = isFeatured;
+        this.showInHero = showInHero;
+        this.showInSelectedWorks = showInSelectedWorks;
+        this.heroOrder = heroOrder;
+        this.selectedWorksOrder = selectedWorksOrder;
     }
 
     public Image(String cloudinaryUrl, String cloudinaryPublicId, String category, String altText,
                  Integer displayOrder, Boolean isFeatured, Boolean showInHero, Boolean showInSelectedWorks,
                  Integer heroOrder, Integer selectedWorksOrder) {
-        this.cloudinaryUrl = cloudinaryUrl;
-        this.cloudinaryPublicId = cloudinaryPublicId;
-        this.category = category;
-        this.altText = altText;
-        this.displayOrder = displayOrder != null ? displayOrder : 0;
-        this.isFeatured = isFeatured != null ? isFeatured : false;
-        this.showInHero = showInHero != null ? showInHero : false;
-        this.showInSelectedWorks = showInSelectedWorks != null ? showInSelectedWorks : false;
-        this.heroOrder = heroOrder != null ? heroOrder : 0;
-        this.selectedWorksOrder = selectedWorksOrder != null ? selectedWorksOrder : 0;
-        this.createdAt = LocalDateTime.now();
+        this(null, cloudinaryUrl, cloudinaryPublicId, category, altText, displayOrder, isFeatured, showInHero, showInSelectedWorks, heroOrder, selectedWorksOrder);
     }
 
     public Long getId() {
@@ -111,22 +86,6 @@ public class Image {
         this.displayOrder = displayOrder;
     }
 
-    public Integer getHeroOrder() {
-        return heroOrder;
-    }
-
-    public void setHeroOrder(Integer heroOrder) {
-        this.heroOrder = heroOrder;
-    }
-
-    public Integer getSelectedWorksOrder() {
-        return selectedWorksOrder;
-    }
-
-    public void setSelectedWorksOrder(Integer selectedWorksOrder) {
-        this.selectedWorksOrder = selectedWorksOrder;
-    }
-
     public Boolean getIsFeatured() {
         return isFeatured;
     }
@@ -151,11 +110,19 @@ public class Image {
         this.showInSelectedWorks = showInSelectedWorks;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public Integer getHeroOrder() {
+        return heroOrder;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setHeroOrder(Integer heroOrder) {
+        this.heroOrder = heroOrder;
+    }
+
+    public Integer getSelectedWorksOrder() {
+        return selectedWorksOrder;
+    }
+
+    public void setSelectedWorksOrder(Integer selectedWorksOrder) {
+        this.selectedWorksOrder = selectedWorksOrder;
     }
 }
