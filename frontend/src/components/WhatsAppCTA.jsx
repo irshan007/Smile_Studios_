@@ -1,9 +1,8 @@
-// src/components/WhatsAppCTA.jsx
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 import './WhatsAppCTA.css';
 
-const whatsappNumber = '+917200039833'; // provided number
+const whatsappNumber = '+917200039833';
 
 export const WhatsAppCTA = () => {
   return (

@@ -4,6 +4,7 @@ import { Camera, Sparkles, HeartHandshake, ArrowRight } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { CloudinaryImage } from '../components/CloudinaryImage';
 import { aboutGalleryImages } from '../data/portfolioAssets';
+import './About.css';
 
 export function About() {
   return (
@@ -23,7 +24,7 @@ export function About() {
       <section className="section-padding container">
         <div className="why-us-grid">
           <div>
-            <span style={{ textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
+            <span className="section-label">
               OUR JOURNEY
             </span>
             <h2 style={{ marginTop: '0.5rem', marginBottom: '1.5rem' }}>
@@ -40,7 +41,7 @@ export function About() {
             </p>
           </div>
 
-          <div style={{ position: 'relative', height: '500px' }}>
+          <div className="about-hero-image">
             <CloudinaryImage
               src={aboutGalleryImages[0]}
               alt="A Smile Studios portrait session in natural light"
@@ -51,17 +52,17 @@ export function About() {
       </section>
 
       {/* Core Pillars */}
-      <section style={{ background: 'var(--bg-surface)', padding: '6rem 0', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
+      <section style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }} className="section-padding">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
+            <span className="section-label">
               WHAT SETS US APART
             </span>
             <h2>Our Core Principles</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
-            <div style={{ background: 'var(--bg-card)', padding: '2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+          <div className="about-pillars-grid">
+            <div className="about-pillar-card">
               <Camera color="var(--accent-gold)" size={32} style={{ marginBottom: '1.25rem' }} />
               <h3 style={{ fontSize: '1.4rem', color: 'var(--text-main)', marginBottom: '0.75rem' }}>Medium Format Precision</h3>
               <p style={{ fontSize: '0.9rem' }}>
@@ -69,7 +70,7 @@ export function About() {
               </p>
             </div>
 
-            <div style={{ background: 'var(--bg-card)', padding: '2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+            <div className="about-pillar-card">
               <Sparkles color="var(--accent-gold)" size={32} style={{ marginBottom: '1.25rem' }} />
               <h3 style={{ fontSize: '1.4rem', color: 'var(--text-main)', marginBottom: '0.75rem' }}>Bespoke Color Grading</h3>
               <p style={{ fontSize: '0.9rem' }}>
@@ -77,7 +78,7 @@ export function About() {
               </p>
             </div>
 
-            <div style={{ background: 'var(--bg-card)', padding: '2.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+            <div className="about-pillar-card">
               <HeartHandshake color="var(--accent-gold)" size={32} style={{ marginBottom: '1.25rem' }} />
               <h3 style={{ fontSize: '1.4rem', color: 'var(--text-main)', marginBottom: '0.75rem' }}>Bespoke Client Experience</h3>
               <p style={{ fontSize: '0.9rem' }}>
@@ -94,7 +95,7 @@ export function About() {
         <p style={{ maxWidth: '600px', margin: '0 auto 2.5rem' }}>
           Explore our portfolio or contact Smile Studios to reserve your dates.
         </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem' }}>
+        <div className="about-cta-buttons">
           <Link to="/portfolio" className="btn-primary">
             View Portfolio <ArrowRight size={18} />
           </Link>
@@ -106,3 +107,4 @@ export function About() {
     </>
   );
 }
+

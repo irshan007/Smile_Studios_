@@ -13,8 +13,8 @@
   width: 100%;
   margin: 0 0 1.25rem;
   padding: 0;
-  border: 1px solid var(--border-light, rgba(255, 255, 255, 0.08));
-  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   overflow: hidden;
   background: #111113;
   cursor: pointer;
@@ -28,11 +28,11 @@
 .gallery-tile:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 16px rgba(197, 160, 89, 0.12);
-  border-color: var(--accent-gold, #c5a059);
+  border-color: var(--accent-gold);
 }
 
 .gallery-tile:focus-visible {
-  outline: 2px solid var(--accent-gold, #c5a059);
+  outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }
 
@@ -105,11 +105,11 @@
 }
 
 .gallery-tile-number {
-  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-family: var(--font-serif);
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.1em;
-  color: var(--accent-gold, #c5a059);
+  color: var(--accent-gold);
 }
 
 .gallery-tile-caption {
@@ -158,4 +158,3 @@
     padding: 0.85rem 0.75rem;
   }
 }
-

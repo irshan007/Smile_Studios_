@@ -30,7 +30,7 @@ export function PortfolioCategories() {
     <>
       <SeoHead
         title="Portfolio Categories"
-        description="Browse Smile Studios' weddings, pre-weddings, portraits, engagement stories, maternity sessions and event captures."
+        description="Browse Smile Studios' weddings, portraits, engagement stories, maternity sessions and event captures."
       />
 
       <div className="page-header">

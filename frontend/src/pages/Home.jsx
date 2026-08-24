@@ -10,7 +10,6 @@ import { fetchApi } from '../utils/api';
 import { heroSlides, homeSelectedWorks, aboutGalleryImages } from '../data/portfolioAssets';
 import './Home.css';
 
-const DEFAULT_HERO_SLIDES = heroSlides;
 
 export function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -22,7 +21,7 @@ export function Home() {
   const [lightboxIdx, setLightboxIdx] = useState(0);
 
   // Auto-rotating hero slideshow interval (5 seconds)
-  const slideCount = heroImages.length > 0 ? heroImages.length : DEFAULT_HERO_SLIDES.length;
+  const slideCount = heroImages.length > 0 ? heroImages.length : heroSlides.length;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -71,7 +70,7 @@ export function Home() {
         title: img.altText || 'Smile Studios Fine Art Photography',
         tag: img.category ? `Smile Studios • ${img.category}` : 'Smile Studios Photography & Films',
       }))
-    : DEFAULT_HERO_SLIDES.map(slide => ({ url: slide.src, title: slide.title, tag: slide.tag }));
+    : heroSlides.map(slide => ({ url: slide.src, title: slide.title, tag: slide.tag }));
 
   const displayWorks = selectedWorks.length > 0
     ? selectedWorks
@@ -170,7 +169,7 @@ export function Home() {
           </div>
 
           <div>
-            <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
+            <span className="section-label">
               SMILE STUDIOS PHILOSOPHY
             </span>
             <h2 style={{ marginTop: '0.5rem', marginBottom: '1.5rem' }}>
@@ -212,7 +211,7 @@ export function Home() {
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
-              <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
+              <span className="section-label">
                 FEATURED STORIES
               </span>
               <h2>Selected Works</h2>
@@ -250,7 +249,7 @@ export function Home() {
       {/* 4. SIGNATURE SERVICES */}
       <section className="section-padding container">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
+          <span className="section-label">
             WHAT WE CAPTURE
           </span>
           <h2>Photography shaped around your story</h2>
@@ -273,7 +272,7 @@ export function Home() {
       <section className="section-padding container">
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <Heart color="var(--accent-gold)" size={28} style={{ marginBottom: '0.75rem' }} />
-          <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600, display: 'block' }}>
+          <span className="section-label" style={{ display: 'block' }}>
             KIND WORDS
           </span>
           <h2>Client Stories</h2>
@@ -311,7 +310,7 @@ export function Home() {
       {/* 6. CLOSING CTA BANNER */}
       <section className="closing-cta">
         <div className="container" style={{ maxWidth: '700px' }}>
-          <span style={{ textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-gold)', fontSize: '0.85rem', fontWeight: 600 }}>
+          <span className="section-label">
             BEGIN YOUR STORY
           </span>
           <h2 style={{ marginTop: '0.5rem', marginBottom: '1.5rem', fontSize: '3rem' }}>

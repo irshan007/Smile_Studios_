@@ -198,3 +198,13 @@ button {
     opacity: 0.45;
   }
 }
+
+/* Reusable section label / eyebrow text */
+.section-label {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+}

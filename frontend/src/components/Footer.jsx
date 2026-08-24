@@ -55,7 +55,7 @@ export function Footer() {
               <li><Link to="/portfolio/events">Events</Link></li>
               <li><Link to="/portfolio/maternity-baby">Maternity & Baby</Link></li>
               <li><Link to="/portfolio/weddings">Weddings</Link></li>
-              <li><Link to="/portfolio/pre-weddings">Pre Weddings</Link></li>
+              <li><Link to="/portfolio/engagement">Engagement</Link></li>
             </ul>
           </div>
 
@@ -63,8 +63,9 @@ export function Footer() {
           <div>
             <h4 className="footer-column-title">Connect</h4>
             <ul className="footer-links">
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <MapPin size={16} color="var(--accent-gold)" /> Chennai • Hyderabad • Bengaluru
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                <MapPin size={16} color="var(--accent-gold)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>224, Golden Street, 7th Cross St,<br />Thirumullaivoyal, Chennai,<br />Tamil Nadu 600062</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Phone size={16} color="var(--accent-gold)" /> +91 98765 43210
@@ -79,8 +80,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Smile Studios. All rights reserved.</p>
-          <p style={{ display: 'flex', gap: '1.5rem' }}>
-          </p>
+        
         </div>
       </div>
     </footer>

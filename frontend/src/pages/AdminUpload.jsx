@@ -5,7 +5,6 @@ import { fetchApi } from '../utils/api';
 
 const CATEGORIES = [
   'Portraits',
-  'Pre Weddings',
   'Weddings',
   'Engagement',
   'Events',
