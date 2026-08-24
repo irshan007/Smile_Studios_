@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle, Send, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, CheckCircle, Send, MessageCircle } from 'lucide-react';
 import { SeoHead } from '../components/SeoHead';
 import { fetchApi } from '../utils/api';
 import './Contact.css';
@@ -28,7 +28,6 @@ const YoutubeIcon = ({ size = 22, color = 'currentColor' }) => (
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
     eventDate: '',
     message: '',
@@ -51,11 +50,6 @@ export function Contact() {
   const validate = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Full name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email address is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
-    }
     if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
     if (!formData.eventDate) newErrors.eventDate = 'Event date is required';
     if (!formData.message.trim()) newErrors.message = 'Please provide details about your event';
@@ -80,7 +74,6 @@ export function Contact() {
       setSubmittedSuccess(true);
       setFormData({
         name: '',
-        email: '',
         phone: '',
         eventDate: '',
         message: '',
@@ -130,16 +123,6 @@ export function Contact() {
                   <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem' }}>Phone & WhatsApp</h4>
                   <p style={{ fontSize: '0.9rem' }}>+917200039833</p>
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>WhatsApp: Smile Studios</p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div className="social-icon-btn" style={{ width: '50px', height: '50px' }}>
-                  <Mail size={22} color="var(--accent-gold)" />
-                </div>
-                <div>
-                  <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem' }}>Email Inquiries</h4>
-                  <p style={{ fontSize: '0.9rem' }}>hello@photography.com</p>
                 </div>
               </div>
 
@@ -250,34 +233,18 @@ export function Contact() {
                   {errors.name && <span className="error-text">{errors.name}</span>}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="form-input"
-                      placeholder="e.g. ananya@example.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                    {errors.email && <span className="error-text">{errors.email}</span>}
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone / WhatsApp *</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="form-input"
-                      placeholder="+917200039833"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    />
-                    {errors.phone && <span className="error-text">{errors.phone}</span>}
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Phone / WhatsApp *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    className="form-input"
+                    placeholder="+917200039833"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                  {errors.phone && <span className="error-text">{errors.phone}</span>}
                 </div>
 
                 <div className="form-group">

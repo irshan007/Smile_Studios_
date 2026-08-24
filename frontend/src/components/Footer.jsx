@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, MapPin } from 'lucide-react';
 import './Footer.css';
 
 const InstagramIcon = ({ size = 18 }) => (
@@ -29,9 +29,6 @@ export function Footer() {
               </a>
               <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="WhatsApp">
                 <Phone size={18} />
-              </a>
-              <a href="mailto:hello@smilestudios.com" className="social-icon-btn" aria-label="Email">
-                <Mail size={18} />
               </a>
             </div>
           </div>
@@ -69,9 +66,6 @@ export function Footer() {
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Phone size={16} color="var(--accent-gold)" /> +91 98765 43210
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Mail size={16} color="var(--accent-gold)" /> hello@smilestudios.com
               </li>
             </ul>
           </div>

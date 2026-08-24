@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 public class ContactSubmission {
     private Long id;
     private String name;
-    private String email;
     private String phone;
     private LocalDate eventDate;
     private String message;
@@ -15,18 +14,17 @@ public class ContactSubmission {
     public ContactSubmission() {
     }
 
-    public ContactSubmission(Long id, String name, String email, String phone, LocalDate eventDate, String message, LocalDateTime createdAt) {
+    public ContactSubmission(Long id, String name, String phone, LocalDate eventDate, String message, LocalDateTime createdAt) {
         this.id = id;
         this.name = name;
-        this.email = email;
         this.phone = phone;
         this.eventDate = eventDate;
         this.message = message;
         this.createdAt = createdAt;
     }
 
-    public ContactSubmission(String name, String email, String phone, LocalDate eventDate, String message) {
-        this(null, name, email, phone, eventDate, message, LocalDateTime.now());
+    public ContactSubmission(String name, String phone, LocalDate eventDate, String message) {
+        this(null, name, phone, eventDate, message, LocalDateTime.now());
     }
 
     public Long getId() {
@@ -43,14 +41,6 @@ public class ContactSubmission {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPhone() {
