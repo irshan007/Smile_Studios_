@@ -37,6 +37,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ApiResponseDTO.error(ex.getMessage()));
     }
 
+    @ExceptionHandler(CloudinaryStorageException.class)
+    public ResponseEntity<ApiResponseDTO<Void>> handleCloudinaryStorage(CloudinaryStorageException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiResponseDTO.error(ex.getMessage()));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponseDTO<Void>> handleGenericException(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
