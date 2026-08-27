@@ -5,6 +5,7 @@ import './Navbar.css';
 
 const CATEGORIES = [
   { name: 'Portraits', slug: 'portraits' },
+  { name: 'Pre Weddings', slug: 'pre-weddings' },
   { name: 'Weddings', slug: 'weddings' },
   { name: 'Engagement', slug: 'engagement' },
   { name: 'Events', slug: 'events' },

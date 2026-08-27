@@ -4,7 +4,11 @@ import wedding3 from '../assets/Project_Source/wedding/c3.png';
 import wedding4 from '../assets/Project_Source/wedding/c4.png';
 import wedding5 from '../assets/Project_Source/wedding/c5.png';
 
+import preWedding1 from '../assets/Project_Source/pre wedding/c1.png';
 import preWedding2 from '../assets/Project_Source/pre wedding/c2.png';
+import preWedding3 from '../assets/Project_Source/pre wedding/c3.png';
+import preWedding4 from '../assets/Project_Source/pre wedding/c4.png';
+import preWedding5 from '../assets/Project_Source/pre wedding/c5 (1).png';
 
 import engagement1 from '../assets/Project_Source/engagement photos/c1.png';
 import engagement2 from '../assets/Project_Source/engagement photos/c2.png';
@@ -62,7 +66,7 @@ export const heroSlides = [
 export const homeSelectedWorks = [
   { id: 1, src: wedding3, category: 'Weddings', altText: 'A graceful wedding portrait with natural light' },
   { id: 2, src: engagement1, category: 'Engagements', altText: 'A warm engagement session in soft evening light' },
-  { id: 3, src: preWedding2, category: 'Engagements', altText: 'A cinematic portrait by the shoreline' },
+  { id: 3, src: preWedding2, category: 'Pre Weddings', altText: 'A cinematic portrait by the shoreline' },
   { id: 4, src: reception1, category: 'Events', altText: 'A vibrant reception scene full of movement and joy' },
   { id: 5, src: maternity3, category: 'Maternity & Baby', altText: 'An intimate maternity portrait with timeless warmth' },
   { id: 6, src: portrait2, category: 'Portraits', altText: 'A refined editorial portrait with confident presence' },
@@ -76,6 +80,12 @@ export const categoryCovers = [
     slug: 'weddings',
     coverImageUrl: wedding1,
     summary: 'Ceremony, reception, and family moments captured with calm detail.',
+  },
+  {
+    name: 'Pre Weddings',
+    slug: 'pre-weddings',
+    coverImageUrl: preWedding1,
+    summary: 'Cinematic, romantic stories captured in serene location shoots.',
   },
   {
     name: 'Engagements',
@@ -105,6 +115,7 @@ export const categoryCovers = [
 
 export const categoryFallbacks = {
   weddings: [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
+  'pre-weddings': [preWedding1, preWedding2, preWedding3, preWedding4, preWedding5],
   'tamil-weddings': [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
   'telugu-weddings': [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],
   'brahmin-weddings': [wedding1, wedding2, wedding3, wedding4, wedding5, reception1],

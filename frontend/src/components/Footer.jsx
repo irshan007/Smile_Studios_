@@ -49,6 +49,7 @@ export function Footer() {
             <h4 className="footer-column-title">Portfolio</h4>
             <ul className="footer-links">
               <li><Link to="/portfolio/portraits">Portraits</Link></li>
+              <li><Link to="/portfolio/pre-weddings">Pre Weddings</Link></li>
               <li><Link to="/portfolio/events">Events</Link></li>
               <li><Link to="/portfolio/maternity-baby">Maternity & Baby</Link></li>
               <li><Link to="/portfolio/weddings">Weddings</Link></li>

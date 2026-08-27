@@ -9,6 +9,7 @@ import './CategoryGallery.css';
 
 const CATEGORY_TITLES = {
   portraits: 'Portraits',
+  'pre-weddings': 'Pre Weddings',
   engagement: 'Engagement',
   events: 'Events',
   'maternity-baby': 'Maternity/Baby',
