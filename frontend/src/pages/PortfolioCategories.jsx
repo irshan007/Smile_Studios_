@@ -56,7 +56,9 @@ export function PortfolioCategories() {
                 </div>
                 <div>
                   <h2 className="category-title">{cat.name}</h2>
-                  <p style={{ color: 'var(--text-main)', marginTop: '0.5rem', maxWidth: '320px' }}>{cat.summary}</p>
+                  <p style={{ color: 'var(--text-main)', marginTop: '0.5rem', maxWidth: '320px' }}>
+                    {cat.summary || `${cat.name} photography & storytelling.`}
+                  </p>
                 </div>
               </div>
             </Link>

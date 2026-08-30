@@ -7,6 +7,11 @@ export async function fetchApi(endpoint, options = {}) {
     'Accept': 'application/json',
   };
 
+  const token = localStorage.getItem('admin_jwt_token');
+  if (token) {
+    defaultHeaders['Authorization'] = `Bearer ${token}`;
+  }
+
   // Do not set Content-Type header for FormData (browser sets boundary automatically)
   if (!(options.body instanceof FormData)) {
     defaultHeaders['Content-Type'] = 'application/json';
@@ -33,6 +38,12 @@ export async function fetchApi(endpoint, options = {}) {
       }
     }
 
+    if (response.status === 401 && !endpoint.includes('/admin/auth/login')) {
+      localStorage.removeItem('admin_jwt_token');
+      localStorage.removeItem('admin_user_info');
+      throw new Error(result.message || 'Your session has expired. Please log in again.');
+    }
+
     if (!response.ok) {
       throw new Error(result.message || `API Error: ${response.status}`);
     }
@@ -46,3 +57,4 @@ export async function fetchApi(endpoint, options = {}) {
     throw error;
   }
 }
+
