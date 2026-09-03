@@ -9,6 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class AdminDataInitializer implements CommandLineRunner {
 
@@ -36,8 +38,16 @@ public class AdminDataInitializer implements CommandLineRunner {
         }
 
         String cleanEmail = adminEmail.trim().toLowerCase();
-        if (adminUserRepository.existsByEmail(cleanEmail)) {
-            logger.info("Admin user with email '{}' already exists. Skipping initialization.", cleanEmail);
+        Optional<AdminUser> existingOpt = adminUserRepository.findByEmail(cleanEmail);
+
+        if (existingOpt.isPresent()) {
+            AdminUser existingAdmin = existingOpt.get();
+            existingAdmin.setPasswordHash(passwordEncoder.encode(adminPassword));
+            if (existingAdmin.getRole() == null || existingAdmin.getRole().isBlank()) {
+                existingAdmin.setRole("ADMIN");
+            }
+            adminUserRepository.save(existingAdmin);
+            logger.info("Admin credentials synchronized for configured email: {}", cleanEmail);
             return;
         }
 

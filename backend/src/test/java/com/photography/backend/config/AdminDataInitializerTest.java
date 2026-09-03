@@ -11,6 +11,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.util.Optional;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -36,7 +38,7 @@ class AdminDataInitializerTest {
         ReflectionTestUtils.setField(adminDataInitializer, "adminEmail", "admin@smilestudios.com");
         ReflectionTestUtils.setField(adminDataInitializer, "adminPassword", "SecurePassword123!");
 
-        when(adminUserRepository.existsByEmail("admin@smilestudios.com")).thenReturn(false);
+        when(adminUserRepository.findByEmail("admin@smilestudios.com")).thenReturn(Optional.empty());
         when(passwordEncoder.encode("SecurePassword123!")).thenReturn("$2a$10$encodedPassword");
 
         adminDataInitializer.run();
@@ -45,16 +47,18 @@ class AdminDataInitializerTest {
     }
 
     @Test
-    @DisplayName("Should skip creation when admin with email already exists")
-    void testInitializerSkipsExistingAdmin() {
+    @DisplayName("Should synchronize password hash when admin with email already exists")
+    void testInitializerSynchronizesExistingAdmin() {
         ReflectionTestUtils.setField(adminDataInitializer, "adminEmail", "admin@smilestudios.com");
         ReflectionTestUtils.setField(adminDataInitializer, "adminPassword", "SecurePassword123!");
 
-        when(adminUserRepository.existsByEmail("admin@smilestudios.com")).thenReturn(true);
+        AdminUser existingAdmin = new AdminUser("admin@smilestudios.com", "$2a$10$oldHash", "ADMIN");
+        when(adminUserRepository.findByEmail("admin@smilestudios.com")).thenReturn(Optional.of(existingAdmin));
+        when(passwordEncoder.encode("SecurePassword123!")).thenReturn("$2a$10$newHash");
 
         adminDataInitializer.run();
 
-        verify(adminUserRepository, never()).save(any(AdminUser.class));
+        verify(adminUserRepository, times(1)).save(existingAdmin);
     }
 
     @Test
@@ -65,7 +69,7 @@ class AdminDataInitializerTest {
 
         adminDataInitializer.run();
 
-        verify(adminUserRepository, never()).existsByEmail(anyString());
+        verify(adminUserRepository, never()).findByEmail(anyString());
         verify(adminUserRepository, never()).save(any(AdminUser.class));
     }
 }

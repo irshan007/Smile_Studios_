@@ -8,6 +8,18 @@ import { categoryCovers } from '../data/portfolioAssets';
 import './PortfolioCategories.css';
 
 const DEFAULT_CATEGORIES = categoryCovers;
+const DEFAULT_CATEGORY_BY_SLUG = new Map(DEFAULT_CATEGORIES.map((cat) => [cat.slug, cat]));
+
+function withStaticFallbacks(categories) {
+  return categories.map((cat) => {
+    const fallback = DEFAULT_CATEGORY_BY_SLUG.get(cat.slug);
+    return {
+      ...cat,
+      coverImageUrl: cat.coverImageUrl || fallback?.coverImageUrl,
+      summary: cat.summary || fallback?.summary,
+    };
+  });
+}
 
 export function PortfolioCategories() {
   const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
@@ -17,7 +29,7 @@ export function PortfolioCategories() {
       try {
         const res = await fetchApi('/gallery/categories');
         if (res?.data?.length > 0) {
-          setCategories(res.data);
+          setCategories(withStaticFallbacks(res.data));
         }
       } catch (err) {
         console.warn('Backend API unavailable, displaying default categories:', err);

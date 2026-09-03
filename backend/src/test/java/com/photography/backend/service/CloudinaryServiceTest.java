@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.io.IOException;
@@ -63,7 +64,7 @@ class CloudinaryServiceTest {
     @DisplayName("Should throw exception when uploading null file")
     void testUploadNullFile() {
         CloudinaryStorageException ex = assertThrows(CloudinaryStorageException.class, () ->
-                cloudinaryService.uploadImage(null)
+                cloudinaryService.uploadImage((MultipartFile) null)
         );
         assertTrue(ex.getMessage().contains("cannot be null"));
     }

@@ -9,17 +9,12 @@ import { fetchApi } from '../utils/api';
 import './CategoryGallery.css';
 
 const CATEGORY_TITLES = {
-  portraits: 'Portraits',
+  weddings: 'Weddings',
   'pre-weddings': 'Pre Weddings',
   engagement: 'Engagement',
+  portraits: 'Portraits',
   events: 'Events',
   'maternity-baby': 'Maternity & Baby',
-  weddings: 'Weddings',
-  'tamil-weddings': 'Weddings',
-  'telugu-weddings': 'Weddings',
-  'brahmin-weddings': 'Weddings',
-  'christian-weddings': 'Weddings',
-  'muslim-weddings': 'Weddings',
 };
 
 export function CategoryGallery() {

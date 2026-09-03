@@ -27,6 +27,7 @@ C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\s
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\service\ContactService.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\service\GalleryService.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\dto\UpdatePortfolioWorkRequest.java
+C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\config\PortfolioMigrationInitializer.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\entity\PortfolioWork.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\repository\AdminUserRepository.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\service\PortfolioWorkService.java
@@ -40,6 +41,7 @@ C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\c
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\dto\ImageUpdateDTO.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\entity\Category.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\service\TestimonialService.java
+C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\config\CategoryDataInitializer.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\dto\CreatePortfolioWorkRequest.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\exception\GlobalExceptionHandler.java
 C:\study\learning\Smile_Studios_\backend\src\main\java\com\photography\backend\config\CloudinaryConfig.java

@@ -447,7 +447,7 @@ export function AdminUpload() {
               <input
                 type="email"
                 className="form-input"
-                placeholder="admin@smilestudios.com"
+                placeholder="Enter admin email"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
                 required
@@ -459,7 +459,7 @@ export function AdminUpload() {
               <input
                 type="password"
                 className="form-input"
-                placeholder="••••••••••••"
+                placeholder="Enter admin password"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
                 required
@@ -1117,6 +1117,18 @@ export function AdminUpload() {
                   />
                   Show in Selected Works
                 </label>
+              </div>
+
+              {/* Display Order */}
+              <div className="form-group" style={{ maxWidth: '200px' }}>
+                <label style={{ fontSize: '0.85rem' }}>Display Order #</label>
+                <input
+                  type="number"
+                  className="form-input"
+                  value={editDisplayOrder}
+                  onChange={(e) => setEditDisplayOrder(Number(e.target.value))}
+                  min="0"
+                />
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem', marginTop: '1rem' }}>

@@ -11,6 +11,7 @@ import { About } from './pages/About';
 import { PortfolioCategories } from './pages/PortfolioCategories';
 import { CategoryGallery } from './pages/CategoryGallery';
 import { Contact } from './pages/Contact';
+import { AdminUpload } from './pages/AdminUpload';
 
 export function App() {
   return (
@@ -25,6 +26,7 @@ export function App() {
               <Route path="/portfolio" element={<PortfolioCategories />} />
               <Route path="/portfolio/:category" element={<CategoryGallery />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/admin" element={<AdminUpload />} />
             </Routes>
           </main>
           <Footer />

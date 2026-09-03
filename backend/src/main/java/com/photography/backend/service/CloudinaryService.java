@@ -118,6 +118,65 @@ public class CloudinaryService {
     }
 
     /**
+     * Upload a local java.io.File to Cloudinary using default configured folder.
+     */
+    public CloudinaryUploadResult uploadImage(java.io.File file) {
+        return uploadImage(file, defaultFolder);
+    }
+
+    /**
+     * Upload a local java.io.File to Cloudinary into a specified folder.
+     */
+    public CloudinaryUploadResult uploadImage(java.io.File file, String folder) {
+        if (file == null || !file.exists()) {
+            throw new CloudinaryStorageException("Source image file does not exist on disk.");
+        }
+
+        if (!isConfigured()) {
+            throw new CloudinaryStorageException(
+                    "Cloudinary credentials are not configured. Please configure CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET."
+            );
+        }
+
+        String targetFolder = (folder != null && !folder.isBlank()) ? folder : defaultFolder;
+
+        try {
+            logger.info("Uploading local file '{}' ({} bytes) to Cloudinary folder '{}'",
+                    file.getName(), file.length(), targetFolder);
+
+            Map<?, ?> uploadParams = ObjectUtils.asMap(
+                    "folder", targetFolder,
+                    "resource_type", "auto"
+            );
+
+            Map<?, ?> uploadResult = cloudinary.uploader().upload(file, uploadParams);
+
+            if (uploadResult == null || !uploadResult.containsKey("public_id")) {
+                throw new CloudinaryStorageException("Cloudinary upload failed: received invalid response from Cloudinary API.");
+            }
+
+            String publicId = (String) uploadResult.get("public_id");
+            String secureUrl = (String) uploadResult.get("secure_url");
+            String url = (String) uploadResult.get("url");
+            String format = (String) uploadResult.get("format");
+            Integer width = uploadResult.get("width") != null ? ((Number) uploadResult.get("width")).intValue() : null;
+            Integer height = uploadResult.get("height") != null ? ((Number) uploadResult.get("height")).intValue() : null;
+            Long bytes = uploadResult.get("bytes") != null ? ((Number) uploadResult.get("bytes")).longValue() : null;
+
+            logger.info("Cloudinary upload successful for local file. Public ID: {}, Secure URL: {}", publicId, secureUrl);
+
+            return new CloudinaryUploadResult(publicId, secureUrl, url, format, width, height, bytes);
+
+        } catch (IOException e) {
+            logger.error("IO exception while reading file for Cloudinary upload", e);
+            throw new CloudinaryStorageException("Failed to read image file data: " + e.getMessage(), e);
+        } catch (Exception e) {
+            logger.error("Cloudinary API error during local image upload", e);
+            throw new CloudinaryStorageException("Cloudinary image upload failed: " + e.getMessage(), e);
+        }
+    }
+
+    /**
      * Delete an image from Cloudinary using its public ID.
      *
      * @param publicId Cloudinary public ID of the image
