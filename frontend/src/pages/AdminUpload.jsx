@@ -109,6 +109,22 @@ export function AdminUpload() {
     }
   }, [authenticated, activeTab, loadAdminWorks]);
 
+  // Listen for centralized session expiry events from fetchApi
+  useEffect(() => {
+    const handleAuthExpired = (e) => {
+      setJwtToken('');
+      setUserInfo(null);
+      setAuthenticated(false);
+      setStatusMessage({
+        type: 'error',
+        text: e?.detail?.message || 'Your session has expired. Please log in again.',
+      });
+    };
+
+    window.addEventListener('admin_auth_expired', handleAuthExpired);
+    return () => window.removeEventListener('admin_auth_expired', handleAuthExpired);
+  }, []);
+
   // --- Handlers ---
 
   const handleLogin = async (e) => {

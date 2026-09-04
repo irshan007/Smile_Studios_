@@ -41,7 +41,22 @@ export async function fetchApi(endpoint, options = {}) {
     if (response.status === 401 && !endpoint.includes('/admin/auth/login')) {
       localStorage.removeItem('admin_jwt_token');
       localStorage.removeItem('admin_user_info');
-      throw new Error(result.message || 'Your session has expired. Please log in again.');
+
+      const sessionExpiredMessage = result.message || 'Your session has expired. Please log in again.';
+
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(
+          new CustomEvent('admin_auth_expired', {
+            detail: { message: sessionExpiredMessage },
+          })
+        );
+
+        if (window.location.pathname !== '/admin') {
+          window.location.href = '/admin';
+        }
+      }
+
+      throw new Error(sessionExpiredMessage);
     }
 
     if (!response.ok) {

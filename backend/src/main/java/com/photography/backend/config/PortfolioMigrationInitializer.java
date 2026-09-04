@@ -9,6 +9,7 @@ import com.photography.backend.repository.PortfolioWorkRepository;
 import com.photography.backend.service.CloudinaryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
@@ -27,6 +28,9 @@ public class PortfolioMigrationInitializer implements CommandLineRunner {
     private final PortfolioWorkRepository portfolioWorkRepository;
     private final CategoryRepository categoryRepository;
     private final CloudinaryService cloudinaryService;
+
+    @Value("${portfolio.migration.enabled:false}")
+    private boolean migrationEnabled;
 
     public PortfolioMigrationInitializer(
             PortfolioWorkRepository portfolioWorkRepository,
@@ -149,6 +153,11 @@ public class PortfolioMigrationInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        if (!migrationEnabled) {
+            logger.info("Portfolio migration is disabled (portfolio.migration.enabled=false). Skipping startup migration.");
+            return;
+        }
+
         String activeProfiles = System.getProperty("spring.profiles.active", "");
         if (activeProfiles.contains("test")) {
             logger.info("Test profile active. Skipping portfolio migration.");
