@@ -116,53 +116,65 @@ export function Contact() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                <div className="social-icon-btn" style={{ width: '50px', height: '50px', flexShrink: 0 }}>
+                <a href="tel:+917200039833" className="social-icon-btn" style={{ width: '50px', height: '50px', flexShrink: 0 }} aria-label="Call +917200039833">
                   <Phone size={22} color="var(--accent-gold)" />
-                </div>
+                </a>
                 <div>
                   <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem' }}>Phone & WhatsApp</h4>
-                  <p style={{ fontSize: '0.9rem' }}>+917200039833</p>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>WhatsApp: Smile Studios</p>
+                  <p style={{ fontSize: '0.9rem' }}>
+                    <a href="tel:+917200039833" style={{ color: 'inherit' }}>+917200039833</a>
+                  </p>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>
+                    WhatsApp: <a href="https://wa.me/917200039833" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-gold)' }}>Smile Studios</a>
+                  </p>
                 </div>
               </div>
 
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div className="social-icon-btn" style={{ width: '50px', height: '50px' }}>
+                <a href="https://instagram.com/smilestudios_official" target="_blank" rel="noreferrer" className="social-icon-btn" style={{ width: '50px', height: '50px' }} aria-label="Instagram">
                   <InstagramIcon size={22} color="var(--accent-gold)" />
-                </div>
+                </a>
                 <div>
                   <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem' }}>Instagram</h4>
-                  <p style={{ fontSize: '0.9rem' }}>@smilestudios_official</p>
+                  <p style={{ fontSize: '0.9rem' }}>
+                    <a href="https://instagram.com/smilestudios_official" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>@smilestudios_official</a>
+                  </p>
                 </div>
               </div>
 
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div className="social-icon-btn" style={{ width: '50px', height: '50px' }}>
+                <a href="https://wa.me/917200039833" target="_blank" rel="noreferrer" className="social-icon-btn" style={{ width: '50px', height: '50px' }} aria-label="WhatsApp">
                   <MessageCircle size={22} color="var(--accent-gold)" />
-                </div>
+                </a>
                 <div>
                   <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem' }}>WhatsApp</h4>
-                  <p style={{ fontSize: '0.9rem' }}>Smile Studios</p>
+                  <p style={{ fontSize: '0.9rem' }}>
+                    <a href="https://wa.me/917200039833" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>Smile Studios</a>
+                  </p>
                 </div>
               </div>
 
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div className="social-icon-btn" style={{ width: '50px', height: '50px' }}>
+                <a href="https://facebook.com/Smilestudio_official" target="_blank" rel="noreferrer" className="social-icon-btn" style={{ width: '50px', height: '50px' }} aria-label="Facebook">
                   <FacebookIcon size={22} color="var(--accent-gold)" />
-                </div>
+                </a>
                 <div>
                   <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem' }}>Facebook</h4>
-                  <p style={{ fontSize: '0.9rem' }}>Smilestudio_official</p>
+                  <p style={{ fontSize: '0.9rem' }}>
+                    <a href="https://facebook.com/Smilestudio_official" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>Smilestudio_official</a>
+                  </p>
                 </div>
               </div>
 
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div className="social-icon-btn" style={{ width: '50px', height: '50px' }}>
+                <a href="https://youtube.com/@smilestudio222" target="_blank" rel="noreferrer" className="social-icon-btn" style={{ width: '50px', height: '50px' }} aria-label="YouTube">
                   <YoutubeIcon size={22} color="var(--accent-gold)" />
-                </div>
+                </a>
                 <div>
                   <h4 style={{ color: 'var(--text-main)', fontSize: '1.05rem' }}>YouTube</h4>
-                  <p style={{ fontSize: '0.9rem' }}>smilestudio222</p>
+                  <p style={{ fontSize: '0.9rem' }}>
+                    <a href="https://youtube.com/@smilestudio222" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>smilestudio222</a>
+                  </p>
                 </div>
               </div>
 
