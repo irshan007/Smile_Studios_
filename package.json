@@ -1,0 +1,23 @@
+{
+  "name": "smile_studios_",
+  "version": "1.0.0",
+  "description": "A luxury, high-performance photography and cinematography website built for **Smile Studios** with a **React 18 + Vite** frontend and a **Spring Boot 3 (Java 21)** backend, connected to **PostgreSQL** for metadata persistence and **Cloudinary** for dynamic image hosting, responsive transformations, and optimization.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irshan007/Smile_Studios_.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/irshan007/Smile_Studios_/issues"
+  },
+  "homepage": "https://github.com/irshan007/Smile_Studios_#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.1"
+  }
+}

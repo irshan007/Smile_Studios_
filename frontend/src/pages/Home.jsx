@@ -123,9 +123,14 @@ export function Home() {
                     <Link to="/portfolio" className="btn-primary">
                       Explore Portfolio <ArrowRight size={18} />
                     </Link>
-                    <Link to="/contact" className="btn-outline">
+                    <a
+                      href="https://wa.me/917200039833?text=Hi%20Smile%20Studios!%20I'd%20like%20to%20book%20a%20consultation.%20Please%20share%20your%20availability%20and%20packages."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-outline"
+                    >
                       Book Consultation
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>

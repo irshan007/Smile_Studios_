@@ -83,7 +83,15 @@ export function Footer() {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About Studio</Link></li>
               <li><Link to="/portfolio">All Galleries</Link></li>
-              <li><Link to="/contact">Book Consultation</Link></li>
+              <li>
+                <a
+                  href="https://wa.me/917200039833?text=Hi%20Smile%20Studios!%20I'd%20like%20to%20book%20a%20consultation.%20Please%20share%20your%20availability%20and%20packages."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book Consultation
+                </a>
+              </li>
             </ul>
           </div>
 
